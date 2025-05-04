@@ -49,19 +49,19 @@ class KeyboardInputHandler:
 
     def send_command(self, direction, speed):
         # First send the original command for printing
-        command_str = direction.value[0].upper() + ' ' + str(speed)
-        print(f"Sending command: {command_str}")
-        
+
         # Then send LED control command
         # Convert speed (0-100) to PWM value (0-255)
         pwm_value = 255 - int((speed / 100.0) * 255)
-        led_command = f"LED {pwm_value}\n"
+        command_str = f"{direction.value[0].upper()} {pwm_value}\n"
+        print(f"Sending command: {command_str}")
+        
         
         if self.ser is None:
-            print(f"Debug mode - would send LED command: {led_command}")
+            print(f"Debug mode - would send LED command: {command_str}")
             return
             
-        self.ser.write(led_command.encode())
+        self.ser.write(command_str.encode())
 
     def get_next_input(self):
         for event in pygame.event.get():
