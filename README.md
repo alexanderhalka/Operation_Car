@@ -34,7 +34,7 @@ This allows real-time control of the RC car using a keyboard.
 - Sends serial commands to the Arduino over USB
 - Allows real-time control
 
-### Arduino Firmware (C)
+### Arduino Firmware (C++)
 - Listens for serial input
 - Parses incoming commands
 - Converts commands into output signals for steering and throttle
